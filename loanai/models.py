@@ -1,6 +1,6 @@
 from django.db import models
 
-# Abstract base user
+# Concrete base user
 class Client(models.Model):
     user_id = models.CharField(max_length=100, unique=True)
     name = models.CharField(max_length=100)
@@ -40,7 +40,7 @@ class Repayment(models.Model):
     loan_application = models.ForeignKey(LoanApplication, on_delete=models.CASCADE)
     due_date = models.DateTimeField()
     amount = models.FloatField()
-    paid = models.BooleanField(default=False)
+    paid = models.BooleanField(default=False)  # type: ignore
     paid_at = models.DateTimeField(null=True, blank=True)
 
 class LoanDisbursement(models.Model):
